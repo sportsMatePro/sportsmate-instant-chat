@@ -164,7 +164,7 @@ io.on('connection', (socket) => {
 	});
 });
 
-server.listen(80, () => {
+server.listen(app.get('port'), () => {
 	console.log(`server is up on port ${port}`) ;
 });
 
