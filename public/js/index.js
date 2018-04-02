@@ -247,11 +247,11 @@ $('#answer').on('click', function () {
 
 
 	$("#reciver-model").modal('hide')
-
+	var order = jQuery.deparam(window.location.search).order
 	if(jQuery.deparam(window.location.search).ser === 'vi'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order=12345&user=54321&ser=v";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=v";
     }else if(jQuery.deparam(window.location.search).ser === 'au'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order=12345&user=54321&ser=a";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=a";
     }
 	 myWindow = window.open(URL, "myWindow", "width=400,height=400");
 
@@ -396,11 +396,11 @@ socket.on('answer', function(answer) {
 
     jQuery('#conversation').append(sendedMsg);
     $("#conversation").animate({ scrollTop: $('#conversation').prop("scrollHeight")}, 1000);
-
+    var order = jQuery.deparam(window.location.search).order
     if(jQuery.deparam(window.location.search).ser === 'vi'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order=12345&user=54321&ser=v";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=v";
     }else if(jQuery.deparam(window.location.search).ser === 'au'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order=12345&user=54321&ser=a";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=a";
     }
 	
 	 myWindow = window.open(URL, "myWindow", "width=400,height=400" );
