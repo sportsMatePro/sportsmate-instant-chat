@@ -592,10 +592,10 @@ $(document).ready(function() {
 						            <div class="col-sm-12 message-main-sender">
 						              <div class="sender">
 							              <div class="message-text">
-							              	<img src="http://sa3b.com/upload-file/files/${name}" width="200px">
+							              	<img src="https://appmedic.net/upload-file/files/${name}" width="200px">
 							              
 							              	<p style="padding-top: 10px;">
-							              	<a href="http://sa3b.com/upload-file/files/${name}" target="_blank" download="${name}">
+							              	<a href="https://appmedic.net/upload-file/files/${name}" target="_blank" download="${name}">
 							              	<i class="fa fa-download fa-2x" aria-hidden="true"></i>
 							              	${name}
 							              	</a> 
@@ -614,7 +614,7 @@ $(document).ready(function() {
 						              <div class="sender">
 						                <div class="message-text">
 						                  
-						                  <a href="http://sa3b.com/upload-file/files/${name}" target="_blank" download="${name}">
+						                  <a href="https://appmedic.net/upload-file/files/${name}" target="_blank" download="${name}">
 						                  <i class="fa fa-download fa-2x" aria-hidden="true"></i>
 							              	${name}
 						                  </a> 
@@ -660,10 +660,10 @@ if ($.trim(reciveFile.fileType) === 'image') {
 						            <div class="col-sm-12 message-main-receiver">
 						              <div class="receiver">
 							              <div class="message-text">
-							              	<img src="http://sa3b.com/upload-file/files/${reciveFile.fileName}" width="200px">
+							              	<img src="https://appmedic.net/upload-file/files/${reciveFile.fileName}" width="200px">
 							              
 							              	<p style="padding-top: 10px;">
-							              	<a href="http://sa3b.com/upload-file/files/${reciveFile.fileName}" target="_blank" download="${reciveFile.fileName}">
+							              	<a href="https://appmedic.net/upload-file/files/${reciveFile.fileName}" target="_blank" download="${reciveFile.fileName}">
 							              	<i class="fa fa-download fa-2x" aria-hidden="true"></i>
 							              	${reciveFile.fileName}
 							              	</a> 
@@ -681,7 +681,7 @@ if ($.trim(reciveFile.fileType) === 'image') {
 						            <div class="col-sm-12 message-main-receiver">
 						              <div class="receiver">
 						                <div class="message-text">
-						                  <a href="http://sa3b.com/upload-file/files/${reciveFile.fileName}" target="_blank" download="${reciveFile.fileName}">
+						                  <a href="https://appmedic.net/upload-file/files/${reciveFile.fileName}" target="_blank" download="${reciveFile.fileName}">
 						                  <i class="fa fa-download fa-2x" aria-hidden="true"></i>
 							              	${reciveFile.fileName}
 						                  </a> 
