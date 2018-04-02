@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Join | ChatApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body class="centered-form" style="background: url(img/login-bg.jpg);">
+  <div class="centered-form__form">
+    <form action="/chat.html">
+      <div class="form-field">
+        <h3>Join a Chat<h3>
+      </div>
+      <input id="service" type="hidden" name="ser" value="">
+      <input id="type" type="hidden" name="type" value="">
+      <div class="form-field">
+        <label>Your name</label>
+        <input type="text" name="user" required autofocus/>
+      </div>
+      <div class="form-field">
+        <label>Order Number</label>
+        <input type="text" name="order" required />
+      </div>
+      <div class="form-field">
+        <button>Join</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/js/libs/jquery-3.3.1.min.js"></script>
+  <script src="/js/libs/bootstrap.min.js"></script>
+  <script src="/js/libs/deeparam.js"></script>
+  <script>
+    jQuery(window).ready(function() {
+      if(jQuery.deparam(window.location.search).type !== '' & jQuery.deparam(window.location.search).type === 'doctor')
+      { 
+        $('#type').val('d'); 
+      }
+      if(jQuery.deparam(window.location.search).type !== '' & jQuery.deparam(window.location.search).type === 'patient')
+      { 
+        $('#type').val('p'); 
+      }
+      if(jQuery.deparam(window.location.search).ser !== '' & jQuery.deparam(window.location.search).ser === 'video chat')
+      { 
+        $('#service').val('vi'); 
+      }
+      if(jQuery.deparam(window.location.search).ser !== '' & jQuery.deparam(window.location.search).ser === 'audio chat')
+      {
+        $('#service').val('au');
+      }
+      if(jQuery.deparam(window.location.search).ser !== '' & jQuery.deparam(window.location.search).ser === 'text chat')
+      {
+        $('#service').val('txt');
+      }
+    });
+  </script>
+</body>
+
+</html>

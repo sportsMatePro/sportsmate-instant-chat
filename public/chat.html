@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>AppMedic Chat</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  
+
+  
+
+ 
+  <!-- Font Awesome File -->
+  
+</head>
+
+<body>
+
+  <div class="container app">
+    <div class="row app-one">
+
+      <!-- New Message Sidebar End -->
+
+      <!-- Conversation Start -->
+      <div class="col-sm-12 conversation">
+        <!-- Heading -->
+        <div class="row heading">
+          <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+            <div class="heading-avatar-icon">
+              <img src="img/user-1.jpg">
+            </div>
+          </div>
+          <div class="col-sm-8 col-xs-7 heading-name">
+            <a class="heading-name-meta" style="color: #fff;">
+            </a>
+            <span class="heading-online" style="color: #fdd;font-weight: bold;">Online</span>
+          </div>
+          
+          <!-- <div id="videoCallBtn" class="col-sm-1 col-xs-1 reply-recording pull-right">
+            <i id="call" class="fa fa-video-camera fa-2x" style="color: #fff" aria-hidden="true"></i>
+          </div> -->
+          <div id="CallBtn" class="col-sm-1 col-xs-1 reply-recording pull-right">
+            <i id="call"  style="color: #fff" aria-hidden="true"></i>
+          </div>
+          
+        </div>
+        <!-- Heading End -->
+
+        <!-- Message Box -->
+        <div class="row message" id="conversation">
+          
+          <!--
+          <div class="row message-previous">
+            <div class="col-sm-12 previous">
+              <a onclick="previous(this)" id="ankitjain28" name="20">
+              Show Previous Message!
+              </a>
+            </div>
+          </div>
+          -->
+
+         <!--  <div id="messages" class="row message-body">
+           <div class="col-sm-12 message-main-receiver">
+             <div class="receiver">
+               <div class="message-text">
+                <img src="https://49m1bo1nddcc2gx8sk220q1m-wpengine.netdna-ssl.com/wp-content/uploads/2016/09/Seemingly-Random-Events-850x479.jpg" width="200px">
+               </div>
+               <span class="message-time pull-right">
+                 Sun
+               </span>
+             </div>
+           </div>
+         </div>
+         
+         <div class="row message-body">
+           <div class="col-sm-12 message-main-receiver">
+             <div class="receiver">
+               <div class="message-text">
+                Hyy, Its Awesome..!
+               </div>
+               <span class="message-time pull-right">
+                 Sun
+               </span>
+             </div>
+           </div>
+         </div>
+         
+         <div class="row message-body">
+           <div class="col-sm-12 message-main-sender">
+             <div class="sender">
+               <div class="message-text">
+                 Thanks n I know its awesome...!
+               </div>
+               <span class="message-time pull-right">
+                 Sun
+               </span>
+             </div>
+           </div>
+         </div>
+         
+         <div class="row message-body">
+           <div class="col-sm-12 message-main-sender">
+             <div class="sender">
+               <div class="message-text">
+                 Thanks n I know its awesome...!
+               </div>
+               <span class="message-time pull-right">
+                 Sun
+               </span>
+             </div>
+           </div>
+         </div>
+         <div class="row message-body">
+           <div class="col-sm-12 message-main-sender">
+             <div class="sender">
+               <div class="message-text">
+                 Thanks n I know its awesome...!
+               </div>
+               <span class="message-time pull-right">
+                 Sun
+               </span>
+             </div>
+           </div>
+         </div> -->
+
+
+        </div>
+        <!-- Message Box End -->
+
+        <!-- Reply Box -->
+        <div class="row reply">
+          <div class="col-sm-1 col-xs-1 reply-emojis">
+            <span class="" data-toggle="modal" data-target="#file-model">
+              <i class="fa fa-paperclip fa-2x"></i>
+            </span>
+          </div>
+          <form id="message-form" action="">
+            <div class="col-sm-9 col-xs-9 reply-main">
+                <input class="form-control" name="message" rows="1" id="comment" type="text" autocomplete="off">
+                <!--<textarea class="form-control" rows="1" id="comment"></textarea>-->
+            </div>
+            <div class="col-sm-1 col-xs-1 reply-send pull-right">
+              <button style=" background-color: rgba(245,241,238,1); /* Green */border: none;//color: white;//padding: 16px 32px;//text-align: center;//text-decoration: none;//display: inline-block;//font-size: 16px;//margin: 4px 2px;//-webkit-transition-duration: 0.4s; /* Safari *///transition-duration: 0.4s;//cursor: pointer;"    
+              >
+                <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+          <!-- <div class="col-sm-1 col-xs-1 reply-recording">
+            <i id="call" class="fa fa-phone fa-2x" aria-hidden="true"></i>
+          </div> -->
+          
+        </div>
+        <!-- Reply Box End -->
+      </div>
+      <!-- Conversation End -->
+    </div>
+    App One End
+  </div>
+
+  <img id="call-img" src="img/ringing-img.gif" width="100px" alt="" style="display:none;"/>
+
+ 
+  
+    <audio id="callerAudio" controls loop style="display:none; ">
+    <source src="sounds/caller-tone.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="reciverAudio" controls loop style="display:none; ">
+    <source src="sounds/reciver-tone.mp3" type="audio/mp3">
+  </audio>
+  <audio id="messageAudio" controls style="display:none; ">
+    <source src="sounds/message-tone.mp3" type="audio/mp3">
+  </audio>
+
+<!-- kkkkkkkkkkk -->
+
+<!-- kkkkkkkkkkkkkk -->
+  <div id="caller-pop"></div>
+<!----------------->
+
+
+  <!-- start caller model Modal -->
+    <section class="modal fade" id="caller-model"  role="dialog">
+      <section class="modal-dialog modal-md">
+        <section class="modal-content">
+          <section class="modal-header text-center" style="background: #ff3c8a;color:#fff">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">calling...</h4>
+          </section>
+          <section class="modal-body">
+            <section class="text-center " >
+                <img  src="/img/ringing-img.gif" width="100px" alt=""/>
+                <p>
+                  <span id="cancel" class="phone reject" style="margin-left:0px">
+                    <i class="fa fa-phone fa-rotate-90 fa-flip-horizontal" aria-hidden="true"></i>
+                  </span>
+                </p>   
+            </section>
+            
+          </section>
+        </section>
+      </section>
+    </section>
+<!-- end caller model Modal -->
+
+
+<!-- start reciver model Modal -->
+    <section class="modal fade" id="reciver-model" role="dialog">
+      <section class="modal-dialog modal-md">
+        <section class="modal-content">
+          <section class="modal-header text-center" style="background: #ff3c8a;color:#fff">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">incomning call</h4>
+          </section>
+          <section class="modal-body text-center">
+        <span id="answer" class="phone answer">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </span>
+              <img  src="img/ringing-img.gif" width="100px" alt=""/>
+              <span id="reject" class="phone reject">
+                <i class="fa fa-phone fa-rotate-90 fa-flip-horizontal" aria-hidden="true"></i>
+              </span>
+          </section>
+        </section>
+      </section>
+    </section>
+<!-- end reciver model Modal -->
+
+<!-- start file Modal -->
+    <section class="modal fade" id="file-model"  role="dialog">
+      <section class="modal-dialog modal-md">
+        <section class="modal-content">
+          <section class="modal-header text-center" style="background: #ff3c8a;color:#fff">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Send File</h4>
+          </section>
+          <section class="modal-body">
+            <form id="uploadForm" action="http://sa3b.com/upload-file/upload.php" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="order" value="">
+              <label class="file">
+                Drop a file or click to select one
+                <input type="file" name="userImage" id="userImage" class="demoInputBox">
+                <!-- use multiple, even if it’s not allowed, to be able to show an info text -->
+              </label>
+              <input type="submit" id="btnSubmit" class="text-center" value="Submit" class="btnSubmit" />
+              <!-- <button type="submit">Upload</button> -->
+              <section id="progress-div">
+                <section id="progress-bar"></section></section>
+              <section id="targetLayer"></section>
+            </form>
+<!--
+  TODO:
+   • add clear/reset option
+   • add validation of type and size
+ -->
+            <!-- <form id="uploadForm" action="http://sa3b.com/upload-file/upload.php" method="post" enctype="multipart/form-data">
+              <section class="text-center">
+                <input type="hidden" name="order" value="">
+                <input name="userImage" id="userImage" type="file" class="demoInputBox" />
+              </section>
+              <section><input type="submit" id="btnSubmit" class="text-center" value="Submit" class="btnSubmit" /></section>
+              <section id="progress-div">
+                <section id="progress-bar"></section></section>
+              <section id="targetLayer"></section>
+            </form> -->
+            <!-- <a href="http://localhost/Chat/chat-files/file-upload/upload.php">link</a> -->
+          </section>
+        </section>
+      </section>
+    </section>
+<!-- end file Modal -->
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/libs/jquery-3.3.1.min.js"></script>
+  <script src="/js/libs/moment.js"></script>
+  <script src="/js/libs/bootstrap.min.js"></script>
+  <script src="/js/libs/deeparam.js"></script>
+  <script>
+    jQuery(window).ready(function() {
+      if(jQuery.deparam(window.location.search).ser === 'vi')
+      { 
+        $('#call').addClass("fa fa-video-camera fa-2x"); 
+      }
+      else if(jQuery.deparam(window.location.search).ser === 'au')
+      {
+        $('#call').addClass("fa fa-phone fa-2x");
+      }
+    });
+  </script>
+  <script src="/js/index.js"></script>
+
+  
+
+  <!-- <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/custom.js"></script> -->
+  <!-- App End -->
+</body>
+
+</html>
