@@ -136,8 +136,8 @@ span {
 }
 
 body {
-  background: url("/img/taha-01.jpg") repeat fixed center;
-  //background-size: cover;
+  background: url("/img/login-bg.jpg") no-repeat fixed center;
+  background-size: cover;
   background-repeat: repeat;
 }
 
@@ -440,7 +440,7 @@ body {
 .message {
   padding: 0 !important;
   margin: 0 !important;
-  background: url("w.jpg") no-repeat fixed center;
+  /* background: url("w.jpg") no-repeat fixed center; */
   background-size: cover;
   overflow-y: auto;
   border: 1px solid #f7f7f7;
@@ -558,7 +558,7 @@ body {
 }
 
 .reply-send {
-  padding: 5px !important;
+  padding: 5px 50px !important;
 }
 
 .reply-send i {

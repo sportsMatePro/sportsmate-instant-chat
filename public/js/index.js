@@ -11,12 +11,12 @@ socket.on('connect', function() {
           id: params.order,
         },
         function(data,status){
-        	alert("Data: " + data );
+        	//alert("Data: " + data );
         	console.log(params);
         	if (data === 'wc-processing') {
         		socket.emit('join', params, function (err){
         		if (err) {
-        			alert("The link not valid");
+        			alert("Unauthorized, will Force redirect to login page.");
         			window.location.href = '/'
         		} else {
         			console.log('No Error');
@@ -40,39 +40,26 @@ socket.on('disconnect', function() {
 
 //on user updateUsersList to the server
 socket.on('updateUsersList', function(users) {
-	console.log('users list', users);
+		console.log('users list', users);
 
-	if(users.length > 1){
+		if(users.length > 1){
+				users.forEach(function (user) {
+					if(user !== jQuery.deparam(window.location.search).user){
+						$(".heading-name-meta").text(user);
+						console.log(user);
+					}
+					else{
+						console.log('not', user);
+					}
+					$(".heading-online").show();
+				});
+		}else{
 			$(".heading-name-meta").text(users);
-			console.log(users);
-			$(".heading-online").show();
-		}
-		else{
-			$(".heading-name-meta").text(users);
-			//$(".heading-name-meta").text('');
 			console.log('not', users);
 			$(".heading-online").hide();
 		}
 
-	/*users.forEach(function (user) {
-		if(user !== jQuery.deparam(window.location.search).user && users.length > 1){
-			$(".heading-name-meta").text(user);
-			console.log(user);
-			$(".heading-online").show();
-		}
-		else{
-			//$(".heading-name-meta").text('');
-			console.log('not', user);
-			//$(".heading-online").hide();
-		}*/
 	})
-	/*console.log(users);
-	var array = users ;
-	console.log(jQuery.deparam(window.location.search).user);
-	onlineUser = array.indexOf(jQuery.deparam(window.location.search).user);
-    if (onlineUser !== -1) array.splice(onlineUser, 1);
-    console.log('h',onlineUser);*/
-//});
 
 
 socket.on('newMesage', function(message) {
@@ -518,14 +505,6 @@ socket.on('missed', function(missed) {
 //////////////////////// start send file events part //////////////////
 ///////////////////////////////////////////////////////////////////////
  // function to search array using for loop
-/*function findInArray(ar, val) {
-    for (var i = 0,len = ar.length; i < len; i++) {
-        if ( ar[i] === val ) { // strict equality test
-            return 1;
-        }
-    }
-    return 0;
-}*/
 function include(arr, obj) {
     for(var i=0; i<arr.length; i++) {
         if (arr[i] == obj) return 1;
