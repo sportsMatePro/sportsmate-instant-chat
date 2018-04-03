@@ -13,7 +13,7 @@ socket.on('connect', function() {
         function(data,status){
         	//alert("Data: " + data );
         	console.log(params);
-        	if (data === 'wc-processing') {
+        	if (data === 'Pending') {
         		socket.emit('join', params, function (err){
         		if (err) {
         			alert("Unauthorized, will Force redirect to login page.");
@@ -23,7 +23,7 @@ socket.on('connect', function() {
         		}
         	}) ;
         	} else {
-        		alert("The link not valid");
+        		alert("Unauthorized, will Force redirect to login page.");
         		window.location.href = '/'
         	}
         	
