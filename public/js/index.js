@@ -13,7 +13,7 @@ socket.on('connect', function() {
         function(data,status){
         	//alert("Data: " + data );
         	console.log(params);
-        	if (data === 'Pending') {
+        	if (data === 'pending') {
         		socket.emit('join', params, function (err){
         		if (err) {
         			alert("Unauthorized, will Force redirect to login page.");
