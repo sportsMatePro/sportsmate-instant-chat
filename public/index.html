@@ -35,26 +35,34 @@
   <script src="/js/libs/deeparam.js"></script>
   <script>
     jQuery(window).ready(function() {
-      if(jQuery.deparam(window.location.search).type !== '' & jQuery.deparam(window.location.search).type === 'doctor')
-      { 
-        $('#type').val('d'); 
+      if (jQuery.deparam(window.location.search).data !== '') {
+          var pageVar = jQuery.deparam(window.location.search).data
+          var parts = pageVar.split(/_/);
+          console.log(parts[0]);
+          console.log(parts);
+            if( parts[0] === 'doctor')
+          { 
+            $('#type').val('d'); 
+          }
+          if( parts[0] === 'patient')
+          { 
+            $('#type').val('p'); 
+          }
+          if(parts[1] === 'Video-chat')
+          { 
+            $('#service').val('vi'); 
+          }
+          if(parts[1] === 'Voice-chat')
+          {
+            $('#service').val('au');
+          }
+          if(parts[1] === 'Text-chat')
+          {
+            $('#service').val('txt');
+          }
+
       }
-      if(jQuery.deparam(window.location.search).type !== '' & jQuery.deparam(window.location.search).type === 'patient')
-      { 
-        $('#type').val('p'); 
-      }
-      if(jQuery.deparam(window.location.search).ser !== '' & jQuery.deparam(window.location.search).ser === 'Video-chat')
-      { 
-        $('#service').val('vi'); 
-      }
-      if(jQuery.deparam(window.location.search).ser !== '' & jQuery.deparam(window.location.search).ser === 'Voice-chat')
-      {
-        $('#service').val('au');
-      }
-      if(jQuery.deparam(window.location.search).ser !== '' & jQuery.deparam(window.location.search).ser === 'Text-chat')
-      {
-        $('#service').val('txt');
-      }
+      
     });
   </script>
 </body>
