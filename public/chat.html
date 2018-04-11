@@ -211,6 +211,19 @@ App One End
 			'iPhone',
 			'iPod'
 			];
+			console.log('iDevices', iDevices);
+
+			var deviceDesc = navigator.userAgent.toString();
+			console.log('deviceDesc', deviceDesc);
+			var ifFound = deviceDesc.search("iOS");
+
+			if (ifFound !== -1) {
+				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
+				console.log('ifFound', ifFound);
+			}else{
+				console.log('ifFound', ifFound);
+			}
+
 
 			var iosDevice;
 
@@ -219,7 +232,7 @@ App One End
 					if (navigator.platform === iDevices.pop()){ iosDevice = true }
 				}
 			}
-			
+
 			if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
 				iosDevice = true
 				if (document.cookie.indexOf("iphone_redirect=false") == -1) iosDevice = true
