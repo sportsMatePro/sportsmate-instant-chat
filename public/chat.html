@@ -221,13 +221,17 @@ App One End
 			}
 
 			iosDevice = false;
+			console.log('iosDevice', iosDevice);
 			var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
 
 			if (iosDevice === true) {
-				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site')
+				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
+				console.log('iosDevice if true', iosDevice);
 			} else {
+				console.log('iosDevice if false', iosDevice);
 				if (isSafari === true) {
-					alert('We noticed that your Browser is Safari. We recommend you use another Browser so you can enjoy the full features of our site')
+					alert('We noticed that your Browser is Safari. We recommend you use another Browser so you can enjoy the full features of our site');
+					console.log('Safari if true', isSafari);
 				}
 			}
 			//alert(isSafari);
