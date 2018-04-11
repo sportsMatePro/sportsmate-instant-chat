@@ -219,6 +219,11 @@ App One End
 					if (navigator.platform === iDevices.pop()){ iosDevice = true }
 				}
 			}
+			
+			if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+				iosDevice = true
+				if (document.cookie.indexOf("iphone_redirect=false") == -1) iosDevice = true
+			}
 
 			iosDevice = false;
 			console.log('iosDevice', iosDevice);
