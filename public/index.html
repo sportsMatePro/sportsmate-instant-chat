@@ -35,6 +35,8 @@
   <script src="/js/libs/deeparam.js"></script>
   <script>
     jQuery(window).ready(function() {
+      alert('Warning: audio and video chat are blocked IOS Devices. We recommend ( you if have one ) to use another device so you can enjoy the full features of our site');
+    
       if (jQuery.deparam(window.location.search).data !== '') {
           var pageVar = jQuery.deparam(window.location.search).data
           var parts = pageVar.split(/_/);
