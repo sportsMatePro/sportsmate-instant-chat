@@ -202,7 +202,7 @@ App One End
 		jQuery(window).ready(function() {
 		var deviceDesc = navigator.userAgent.toString().toLowerCase();
 			console.log('deviceDesc', deviceDesc);
-			var ifFound = deviceDesc.search("ios");
+			var ifFound = deviceDesc.search("iphone");
 
 
 			if (ifFound !== -1) {
@@ -210,6 +210,7 @@ App One End
 				console.log('ifFound', ifFound);
 			}else{
 				console.log('ifFound', ifFound);
+				alert('failed');
 			}
 		});
 	</script>
