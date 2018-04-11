@@ -25,7 +25,7 @@
 			<div class="col-sm-12 conversation">
 				<!-- Heading -->
 				<div class="row heading">
-					<div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+					<div class="col-sm-2 col-md-1 col-xs-3 heading-avatar" >
 						<div class="heading-avatar-icon">
 							<img src="img/user-1.jpg">
 						</div>
@@ -122,7 +122,7 @@ App One End
 			<section class="modal-body">
 				<section class="text-center " >
 					<section class="alert alert-danger" style="font-size: 80%">
-						<strong>Warning :</strong> keep eye on your browser to to allow pop up for your call, and make sure to close your call window after end it
+						<strong>Warning :</strong> keep eye on your browser to allow pop up for your call, and make sure to close your call window after end it
 					</section>
 					<img  src="/img/ringing-img.gif" width="100px" alt=""/>
 					<p>
@@ -198,6 +198,44 @@ App One End
 	<script src="/js/libs/moment.js"></script>
 	<script src="/js/libs/bootstrap.min.js"></script>
 	<script src="/js/libs/deeparam.js"></script>
+	<script>
+		
+		////////////
+		function iOS() {
+
+			var iDevices = [
+			'iPad Simulator',
+			'iPhone Simulator',
+			'iPod Simulator',
+			'iPad',
+			'iPhone',
+			'iPod'
+			];
+
+			var iosDevice;
+
+			if (!!navigator.platform) {
+				while (iDevices.length) {
+					if (navigator.platform === iDevices.pop()){ iosDevice = true }
+				}
+			}
+
+			iosDevice = false;
+			var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+
+			if (iosDevice === true) {
+				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site')
+			} else {
+				if (isSafari === true) {
+					alert('We noticed that your Browser is Safari. We recommend you use another Browser so you can enjoy the full features of our site')
+				}
+			}
+			//alert(isSafari);
+		}
+
+		iOS();
+		////////////
+	</script>
 	<script>
 		jQuery(window).ready(function() {
 			if(jQuery.deparam(window.location.search).ser === 'vi')

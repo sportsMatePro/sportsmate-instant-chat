@@ -206,7 +206,7 @@ body {
 
 .heading-avatar {
   padding: 0;
-  cursor: pointer;
+  width: 5%;
 
 }
 
@@ -447,7 +447,7 @@ body {
   background-size: cover;
   overflow-y: auto;
   border: 1px solid #f7f7f7;
-  height: calc(100% - 120px);
+  height: calc(100% - 115px);
 }
 .message-previous {
   margin : 0 !important;
@@ -596,23 +596,37 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-  .app {
-    top: 0;
-    height: 100%;
+    .app {
+      top: 0;
+      height: 100%;
+    }
+    .heading {
+      height: 50px;
+      background-color: #ff3c8a;
+    }
+    .fa-2x {
+      font-size: 2.3em !important;
+    }
+    .heading-avatar {
+      padding: 0 !important;
+      width: 10%;
+      font-size: 80%;
+
   }
-  .heading {
-    height: 70px;
-    background-color: #ff3c8a;
+  .reply-send {
+    padding: 5px 0 !important;
   }
-  .fa-2x {
-    font-size: 2.3em !important;
+  .reply-send i{
+    margin: 0px 0px 0px -5px!important;
   }
-  .heading-avatar {
-    padding: 0 !important;
+  .message {
+    height: calc(100% - 105px);
   }
+      
+}
   .heading-avatar-icon img {
-    height: 50px;
-    width: 50px;
+    //height: 50px;
+    //width: 50px;
   }
   .heading-compose {
     padding: 5px !important;
@@ -676,11 +690,9 @@ body {
     border-left: 1px solid rgba(0, 0, 0, .08);
     /*overflow-y: auto;*/
   }
-  .message {
-    height: calc(100% - 140px);
-  }
+  
   .reply {
-    height: 70px;
+    height: 55px;
   }
   .reply-emojis {
     padding: 5px 0 !important;
@@ -700,12 +712,10 @@ body {
     padding: 5px 0 !important;
   }
   .reply-recording i {
-    padding: 5px 0 !important;
+    padding: 0px 0 !important;
     font-size: 1.8em !important;
   }
-  .reply-send {
-    padding: 5px 0 !important;
-  }
+  
   .reply-send i {
     padding: 5px 2px 5px 0 !important;
     font-size: 1.8em !important;
