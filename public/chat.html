@@ -199,6 +199,21 @@ App One End
 	<script src="/js/libs/bootstrap.min.js"></script>
 	<script src="/js/libs/deeparam.js"></script>
 	<script>
+		jQuery(window).ready(function() {
+		var deviceDesc = navigator.userAgent.toString().toLowerCase();
+			console.log('deviceDesc', deviceDesc);
+			var ifFound = deviceDesc.search("ios");
+
+
+			if (ifFound !== -1) {
+				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
+				console.log('ifFound', ifFound);
+			}else{
+				console.log('ifFound', ifFound);
+			}
+		});
+	</script>
+	<script>
 		
 		////////////
 		function iOS() {
@@ -213,9 +228,10 @@ App One End
 			];
 			console.log('iDevices', iDevices);
 
-			var deviceDesc = navigator.userAgent.toString();
+			var deviceDesc = navigator.userAgent.toString().toLowerCase();
 			console.log('deviceDesc', deviceDesc);
-			var ifFound = deviceDesc.search("iOS");
+			var ifFound = deviceDesc.search("ios");
+
 
 			if (ifFound !== -1) {
 				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
