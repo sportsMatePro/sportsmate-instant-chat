@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="shortcut icon" href="https://www.appmedic.net/wp-content/uploads/2018/02/fav.png">
 
 	<!-- Font Awesome File -->
 
@@ -25,7 +26,7 @@
 			<div class="col-sm-12 conversation">
 				<!-- Heading -->
 				<div class="row heading">
-					<div class="col-sm-2 col-md-1 col-xs-3 heading-avatar" >
+					<div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
 						<div class="heading-avatar-icon">
 							<img src="img/user-1.jpg">
 						</div>
@@ -48,14 +49,20 @@
 
     <!-- Message Box -->
     <div class="row message" id="conversation">
-    	<div class="row message-previous">
-    		<div class="col-sm-12 previous">
-    			<div class="alert alert-danger" role="alert">
-    				<strong>Warning :</strong> your chat is an instant chat if you refresh your page you will loose the previous messages
-    			</div>
-    		</div>
-    	</div>
-    </div>
+
+          <!--
+          <div class="row message-previous">
+            <div class="col-sm-12 previous">
+              <a onclick="previous(this)" id="ankitjain28" name="20">
+              Show Previous Message!
+              </a>
+            </div>
+          </div>
+      -->
+
+
+
+  </div>
   <!-- Message Box End -->
 
   <!-- Reply Box -->
@@ -121,9 +128,6 @@ App One End
 			</section>
 			<section class="modal-body">
 				<section class="text-center " >
-					<section class="alert alert-danger" style="font-size: 80%">
-						<strong>Warning :</strong> keep eye on your browser to allow pop up for your call, and make sure to close your call window after end it
-					</section>
 					<img  src="/img/ringing-img.gif" width="100px" alt=""/>
 					<p>
 						<span id="cancel" class="phone reject" style="margin-left:0px">
@@ -148,9 +152,6 @@ App One End
 				<h4 class="modal-title">incomning call</h4>
 			</section>
 			<section class="modal-body text-center">
-				<section class="alert alert-danger" style="font-size: 80%">
-					<strong>Warning :</strong> keep eye on your browser to to allow pop up for your call, and make sure to close your call window after end it
-				</section>
 				<span id="answer" class="phone answer">
 					<i class="fa fa-phone" aria-hidden="true"></i>
 				</span>
@@ -176,12 +177,11 @@ App One End
 				<form id="uploadForm" action="https://appmedic.net/upload-file/upload.php" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="order" value="">
 					<label class="file">
-						Drop a file or click to select one, max size is 10 MB.
+						Drop a file or click to select one
 						<input type="file" name="userImage" id="userImage" class="demoInputBox">
 						<!-- use multiple, even if it’s not allowed, to be able to show an info text -->
 					</label>
-					<br>
-					<input type="submit" id="btnSubmit" class="text-center" value="Send" class="btnSubmit" />
+					<input type="submit" id="btnSubmit" class="text-center" value="Submit" class="btnSubmit" />
 					<!-- <button type="submit">Upload</button> -->
 					<section id="progress-div">
 						<section id="progress-bar"></section></section>
@@ -198,83 +198,6 @@ App One End
 	<script src="/js/libs/moment.js"></script>
 	<script src="/js/libs/bootstrap.min.js"></script>
 	<script src="/js/libs/deeparam.js"></script>
-	<script>
-		jQuery(window).ready(function() {
-		var deviceDesc = navigator.userAgent.toString().toLowerCase();
-			console.log('deviceDesc', deviceDesc);
-			var ifFound = deviceDesc.search("iphone");
-
-
-			if (ifFound !== -1) {
-				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
-				console.log('ifFound', ifFound);
-			}else{
-				console.log('ifFound', ifFound);
-				
-			}
-		});
-	</script>
-	<script>
-		
-		////////////
-		function iOS() {
-
-			var iDevices = [
-			'iPad Simulator',
-			'iPhone Simulator',
-			'iPod Simulator',
-			'iPad',
-			'iPhone',
-			'iPod'
-			];
-			console.log('iDevices', iDevices);
-
-			var deviceDesc = navigator.userAgent.toString().toLowerCase();
-			console.log('deviceDesc', deviceDesc);
-			var ifFound = deviceDesc.search("ios");
-
-
-			if (ifFound !== -1) {
-				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
-				console.log('ifFound', ifFound);
-			}else{
-				console.log('ifFound', ifFound);
-			}
-
-
-			var iosDevice;
-
-			if (!!navigator.platform) {
-				while (iDevices.length) {
-					if (navigator.platform === iDevices.pop()){ iosDevice = true }
-				}
-			}
-
-			if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
-				iosDevice = true
-				if (document.cookie.indexOf("iphone_redirect=false") == -1) iosDevice = true
-			}
-
-			iosDevice = false;
-			console.log('iosDevice', iosDevice);
-			var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
-
-			if (iosDevice === true) {
-				alert('We noticed that your Device is an IOS Device. We recommend you use another device so you can enjoy the full features of our site');
-				console.log('iosDevice if true', iosDevice);
-			} else {
-				console.log('iosDevice if false', iosDevice);
-				if (isSafari === true) {
-					alert('We noticed that your Browser is Safari. We recommend you use another Browser so you can enjoy the full features of our site');
-					console.log('Safari if true', isSafari);
-				}
-			}
-			//alert(isSafari);
-		}
-
-		iOS();
-		////////////
-	</script>
 	<script>
 		jQuery(window).ready(function() {
 			if(jQuery.deparam(window.location.search).ser === 'vi')
