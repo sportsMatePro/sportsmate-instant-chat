@@ -8,10 +8,10 @@ const {isRealString} = require('./utils/validation') ;
 const {Users} = require('./utils/users') ;
 
 const publicPath = path.join(__dirname, '../public');
-const port = 80;
+const port = 3000; //80
 
 var app = express();
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 3000);
 
 
 
@@ -27,34 +27,34 @@ io.on('connection', (socket) => {
 	
 
 	socket.on('join', (params, callback) => {
-		if ( !isRealString(params.order) || !isRealString(params.user) || !isRealString(params.type)) {
+		if ( !isRealString(params.match) || !isRealString(params.user) || !isRealString(params.type)) {
 			return callback('name and room name not valid')
 		} 
 
-		socket.join(params.order);
+		socket.join(params.match);
 		users.removeUser(socket.id);
 
-		if(users.getUserListCount(params.order) >= 2)
+		if(users.getUserListCount(params.match) >= 2)
 		{
-			console.log(users.getUserListCount(params.order));
+			console.log(users.getUserListCount(params.match));
 			socket.disconnect();
 		}
 		else 
 		{
-			users.addUser(socket.id, params.user, params.order);
+			users.addUser(socket.id, params.user, params.match);
 
-			io.to(params.order).emit('updateUsersList', users.getUserList(params.order));
+			io.to(params.match).emit('updateUsersList', users.getUserList(params.match));
 			//here we greeting a new user
-			socket.to(params.order).emit('Greeting', generateMessage('admin', 'welcome to our app'));
+			socket.to(params.match).emit('Greeting', generateMessage('admin', 'welcome to our app'));
 
 			// let other online user know that we have a new user
-			socket.broadcast.to(params.order).emit('letOtherKnow', generateMessage(params.user, `${params.user} joined`));
+			socket.broadcast.to(params.match).emit('letOtherKnow', generateMessage(params.user, `${params.user} joined`));
 
 			callback();
 
 		
 		/*socket.on('join', (params, callback) => {
-			if ( !isRealString(params.order) || !isRealString(params.user) || !isRealString(params.type)) {
+			if ( !isRealString(params.match) || !isRealString(params.user) || !isRealString(params.type)) {
 				callback('name and room name not valid')
 			} 
 

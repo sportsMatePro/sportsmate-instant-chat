@@ -5,15 +5,22 @@ socket.on('connect', function() {
 
 	console.log('connected to server');
 	var params = jQuery.deparam(window.location.search) ;
-
-	$.post("https://appmedic.net/chat/private/check.php",
+	socket.emit('join', params, function (err){
+		if (err) {
+			alert("Unauthorized, will Force redirect to login page.");
+			window.location.href = '/'
+		} else {
+			console.log('No Error');
+		}
+	}) ;
+	/*$.post("https://appmedic.net/chat/private/check.php",
         {
-          id: params.order,
+          id: params.match,
         },
         function(data,status){
         	//alert("Data: " + data );
         	console.log(params);
-        	if (data === 'pending') {
+        	if (data === 'false') {
         		socket.emit('join', params, function (err){
         		if (err) {
         			alert("Unauthorized, will Force redirect to login page.");
@@ -27,7 +34,7 @@ socket.on('connect', function() {
         		window.location.href = '/'
         	}
         	
-        });
+        });*/
 	
 });
 
@@ -43,20 +50,35 @@ socket.on('updateUsersList', function(users) {
 		console.log('users list', users);
 
 		if(users.length > 1){
-				users.forEach(function (user) {
-					if(user !== jQuery.deparam(window.location.search).user){
-						$(".heading-name-meta").text(user);
-						console.log(user);
-					}
-					else{
-						console.log('not', user);
-					}
-					$(".heading-online").show();
-				});
+			users.forEach(function (user) {
+				if(user !== jQuery.deparam(window.location.search).user){
+					$(".heading-name-meta").text(user);
+					$(".heading-name-meta").append(`<span class="online" 
+															style="padding: 10px;color: #9CCC65;"
+													>
+														<i class="fa fa-circle" aria-hidden="true"></i>
+													</span>`
+												);
+					console.log(user);
+				}
+				else{
+					console.log('not', user);
+					//$(".heading-name-meta").append('<span class="online"><i class="fa fa-circle" aria-hidden="true"></i></span>');
+
+				}
+
+				//$(".heading-online").show();
+			});
 		}else{
 			$(".heading-name-meta").text(users);
+			$(".heading-name-meta").append(`<span class="online" 
+															style="padding: 10px;color: #ffffff;"
+													>
+														<i class="fa fa-circle" aria-hidden="true"></i>
+													</span>`
+												);
 			console.log('not', users);
-			$(".heading-online").hide();
+			//$(".heading-online").hide();
 		}
 
 	})
@@ -93,9 +115,15 @@ socket.on('Greeting', function(Greeting) {
 // to other user when a new user come
 socket.on('letOtherKnow', function(letOtherKnow) {
 	console.log('let Other Know', letOtherKnow);
-	$(".heading-online").show();
+	//$(".heading-online").show();
 	
 	$(".heading-name-meta").text(letOtherKnow.from);
+	$(".heading-name-meta").append(`<span class="online" 
+										style="padding: 10px;color: #9CCC65;"
+								>
+									<i class="fa fa-circle" aria-hidden="true"></i>
+								</span>`
+							);
 
 	
 });
@@ -234,11 +262,11 @@ $('#answer').on('click', function () {
 
 
 	$("#reciver-model").modal('hide')
-	var order = jQuery.deparam(window.location.search).order
+	var match = jQuery.deparam(window.location.search).match
 	if(jQuery.deparam(window.location.search).ser === 'vi'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=v";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?match="+match+"&ser=v";
     }else if(jQuery.deparam(window.location.search).ser === 'au'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=a";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?match="+match+"&ser=a";
     }
 	 myWindow = window.open(URL, "myWindow", "width=400,height=400");
 
@@ -383,11 +411,11 @@ socket.on('answer', function(answer) {
 
     jQuery('#conversation').append(sendedMsg);
     $("#conversation").animate({ scrollTop: $('#conversation').prop("scrollHeight")}, 1000);
-    var order = jQuery.deparam(window.location.search).order
+    var match = jQuery.deparam(window.location.search).match
     if(jQuery.deparam(window.location.search).ser === 'vi'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=v";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?match="+match+"&ser=v";
     }else if(jQuery.deparam(window.location.search).ser === 'au'){
-    	var URL = "https://www.appmedic.net/chat/private/index.php?order="+order+"&ser=a";
+    	var URL = "https://www.appmedic.net/chat/private/index.php?match="+match+"&ser=a";
     }
 	
 	 myWindow = window.open(URL, "myWindow", "width=400,height=400" );
@@ -513,10 +541,10 @@ function include(arr, obj) {
 /////////////////////////////////////////////////////
 $(document).ready(function() { 
 	//alert($.inArray("jpg", ["JPEG","JPG", "Jpg", "jpg", "Jpe", "Png", "PNG", "png", "GIF", "gif", "Tiff", "Jpf", "Jpx"]));
-	var order = jQuery.deparam(window.location.search).order;
+	var match = jQuery.deparam(window.location.search).match;
 	var userType = jQuery.deparam(window.location.search).type;
 
-	jQuery('[name=order]').val(order+'-'+userType) ;
+	jQuery('[name=match]').val(match+'-'+userType) ;
 	jQuery('#uploadForm').on('submit', function (e) {
 		e.preventDefault();
     /*$('#uploadForm').submit(function(e) {*/	
